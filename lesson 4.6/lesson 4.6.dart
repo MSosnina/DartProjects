@@ -1,8 +1,13 @@
 void main(){
   Employee bob = Employee("Bob", "Google");
-
   bob.display();
   bob.work();
+
+  /*
+  Worker tom = Worker();
+  tom.company = "Apple";
+  tom.work();
+   */
 }
 
 class Person{
@@ -14,24 +19,15 @@ class Person{
   }
 }
 
-class Worker{
+mixin Worker{
   String company = '';
   void work(){
     print("Work in company $company");
   }
 }
 
-class Employee implements Person, Worker{
-  String name = '';
-  String company = '';
-
-  void display(){
-    print("Employee name: $name");
-  }
-
-  void work(){
-    print("Employee works in company $company");
-  }
-
-  Employee(this.name, this.company);
+class Employee extends Person with Worker{
+   Employee(name, comp) : super(name){
+     company = comp;
+   }
 }

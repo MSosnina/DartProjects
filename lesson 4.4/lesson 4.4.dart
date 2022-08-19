@@ -1,8 +1,20 @@
 void main(){
-  void n = sum(4,5);
+  Figure rect = Rectangle(20, 20);
+  rect.calculateArea();
 }
 
-sum(int a, int b){
-  print(a+b);
-  return null;
+abstract class Figure{
+  void calculateArea();
+}
+
+class Rectangle extends Figure{
+  int width;
+  int heigth;
+
+  Rectangle(this.width, this.heigth);
+
+  void calculateArea(){
+    int area = width * heigth;
+    print("Area: $area");
+  }
 }
